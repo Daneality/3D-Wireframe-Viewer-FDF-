@@ -6,7 +6,7 @@
 #    By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 17:23:33 by nradin            #+#    #+#              #
-#    Updated: 2023/02/08 18:10:03 by dsas             ###   ########.fr        #
+#    Updated: 2023/02/09 19:18:15 by dsas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
 
 CC = gcc
 
-CC_FLAGS = #-Wall -Wextra -Werror
+CC_FLAGS =  -I/opt/X11/include #-Wall -Wextra -Werror
 
 all: $(NAME)
 
