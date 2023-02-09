@@ -99,10 +99,12 @@ void	render_background(t_img *img, int color)
 
 int	handle_keypress(int keysym, t_data *data)
 {
-	if (keysym == XK_Escape)
+	printf("ewfsd");
+		printf("%d", keysym);
+	if (keysym == 53 || keysym == 17)
 	{
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		mlx_destroy_image(data->mlx_ptr, data->img.addr);
+		mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 		data->win_ptr = NULL;
 		exit(0);
 	}
