@@ -6,7 +6,7 @@
 #    By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 17:23:33 by nradin            #+#    #+#              #
-#    Updated: 2023/02/09 19:18:15 by dsas             ###   ########.fr        #
+#    Updated: 2023/02/12 16:25:41 by dsas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
 
 CC = gcc
 
-CC_FLAGS =  -I/opt/X11/include #-Wall -Wextra -Werror
+CC_FLAGS =  -I/opt/X11/include -I/includes #-Wall -Wextra -Werror
 
 all: $(NAME)
 
@@ -38,7 +38,7 @@ $(NAME): $(OBJECTS_PREFIXED)
 	@make -C $(LIBFT)
 	@make -C $(MLX)
 	mv $(MLX)/libmlx.dylib libmlx.dylib
-	@gcc -o3 -Lmlx_mac -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJECTS_PREFIXED) libft/libft.a ./libmlx.dylib
+	@gcc -o3 $(CC_FLAGS) -Lmlx_mac -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJECTS_PREFIXED) libft/libft.a ./libmlx.dylib
 
 clean:
 	@rm -rf $(OBJS_DIR)
