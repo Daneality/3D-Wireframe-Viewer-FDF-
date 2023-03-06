@@ -6,7 +6,7 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:18:01 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/06 17:03:53 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/06 17:51:29 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,14 @@ typedef struct s_fdf
 	int		win_height;
 	t_mouse	*mouse;
 }			fdf;
+
+void	my_mlx_pixel_put(fdf *data, int x, int y, int color);
+void	fill(int x, int y, fdf *data);
+void	free_2dstring(int **matrix, fdf *data);
+int		**fill_matrix(int height, int width);
+int		**get_map(char *name, fdf *data);
+int		get_color(char *temp);
+void	color(fdf *data);
+
 
 #endif
