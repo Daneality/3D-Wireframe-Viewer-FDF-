@@ -6,41 +6,70 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:18:01 by dsas              #+#    #+#             */
-/*   Updated: 2023/02/12 16:26:57 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/06 17:03:53 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include <stdlib.h>
+# include <fcntl.h>
 # include <stdio.h>
-# include <string.h>
-#include <mlx.h>
-#include "libft.h"
+# include <math.h>
+# include "libft.h"
+# include "mlx.h"
+# include <stddef.h>
 
-#define WINDOW_WIDTH 1920
-#define WINDOW_HEIGHT 1080
-
-#define MLX_ERROR 1
-
-#define RED_PIXEL 0xFF0000
-#define GREEN_PIXEL 0xFF00
-#define WHITE_PIXEL 0xFFFFFF
-
-typedef struct s_img
+typedef enum Bool
 {
-	void	*mlx_img;
+	False,
+	True
+}					t_bool;
+
+typedef struct s_mouse
+{
+	t_bool				is_pressed;
+	int					x;
+	int					y;
+	int					previous_x;
+	int					previous_y;
+}						t_mouse;
+
+typedef struct s_fdf
+{
+	void	*mxl;
+	void	*mlx_win;
+	int		**matrix;
+	int		**color_matrix;
+	int		width;
+	int		height;
+
+	float	zoom;
+	float	angle;
+	t_bool	project;
+	float	zoom_height;
+	int		color;
+	int		y_start_point;
+	int		x_start_point;
+	int		constant;
+	void	*img;
 	char	*addr;
-	int		bpp; /* bits per pixel */
-	int		line_len;
+	int		bits_per_pixel;
+	int		line_length;
 	int		endian;
-}	t_img;
 
-typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	img;
-}	t_data;
+	int		x;
+	int		y;
+	int		x1;
+	int		y1;
+	int		z;
+	int		z1;
+	double	z_angle;
+	double	y_angle;
+	double	x_angle;
+
+	int		win_width;
+	int		win_height;
+	t_mouse	*mouse;
+}			fdf;
 
 #endif
