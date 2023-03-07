@@ -6,13 +6,13 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:55:07 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/07 17:38:00 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:57:26 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	draw_line(fdf *data)
+void	draw_line(t_fdf *data)
 {
 	float	x_step;
 	float	y_step;
@@ -36,10 +36,10 @@ void	draw_line(fdf *data)
 					(data->y_start_point + y), data->color);
 		x += x_step;
 		y += y_step;
-	} 
+	}
 }
 
-void	draw_map(fdf *data)
+void	draw_map(t_fdf *data)
 {
 	int	x;
 	int	y;

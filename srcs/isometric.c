@@ -6,7 +6,7 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:48:51 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/07 19:39:56 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:52:57 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	xy_isometric(int *x, int *y, int z)
 	*y = (*x + *y) * sin(0.9) - z;
 }
 
-void	isometric_x(int x, int y, fdf *data)
+void	isometric_x(int x, int y, t_fdf *data)
 {
 	fill(x, y, data);
 	data->x1 = x + 1;
@@ -44,7 +44,7 @@ void	isometric_x(int x, int y, fdf *data)
 	draw_line(data);
 }
 
-void	isometric_y(int x, int y, fdf *data)
+void	isometric_y(int x, int y, t_fdf *data)
 {
 	fill(x, y, data);
 	data->y1 = y + 1;

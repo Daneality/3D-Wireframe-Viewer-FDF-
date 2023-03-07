@@ -6,7 +6,7 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:18:01 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/07 19:38:54 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:56:41 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_mouse
 	int					previous_y;
 }						t_mouse;
 
-typedef struct s_fdf
+typedef struct s_t_fdf
 {
 	void	*mxl;
 	void	*mlx_win;
@@ -70,33 +70,32 @@ typedef struct s_fdf
 	int		win_width;
 	int		win_height;
 	t_mouse	*mouse;
-}			fdf;
+}			t_fdf;
 
-void	my_mlx_pixel_put(fdf *data, int x, int y, int color);
-void	fill(int x, int y, fdf *data);
-void	free_2dstring(int **matrix, fdf *data);
+void	my_mlx_pixel_put(t_fdf *data, int x, int y, int color);
+void	fill(int x, int y, t_fdf *data);
+void	free_2dstring(int **matrix, t_fdf *data);
 int		**fill_matrix(int height, int width);
-int		**get_map(char *name, fdf *data);
+int		**get_map(char *name, t_fdf *data);
 int		get_color(char *temp);
-void	color(fdf *data);
-void	isometric_x(int x, int y, fdf *data);
-void	isometric_y(int x, int y, fdf *data);
+void	color(t_fdf *data);
+void	isometric_x(int x, int y, t_fdf *data);
+void	isometric_y(int x, int y, t_fdf *data);
 void	rotate_y(int *x, int *z, double beta);
 void	rotate_z(int *x, int *y, double gamma);
 void	rotate_x(int *y, int *z, double alpha);
-void	draw_map(fdf *data);
-void	draw_line(fdf *data);
-int		key(int key, fdf *data);
-void	move_key(int key, fdf *data);
-void	zoom_key(int key, fdf *data);
-void	zoom_height(int key, fdf *data);
-void	change_project(int key, fdf *data);
-int		mous_press(int button, int x, int y, fdf *data);
-int		mous_release(int button, int x, int y, fdf *data);
-int		mous_move(int x, int y, fdf *data);
+void	draw_map(t_fdf *data);
+void	draw_line(t_fdf *data);
+int		key(int key, t_fdf *data);
+void	move_key(int key, t_fdf *data);
+void	zoom_key(int key, t_fdf *data);
+void	zoom_height(int key, t_fdf *data);
+void	change_project(int key, t_fdf *data);
+int		mous_press(int button, int x, int y, t_fdf *data);
+int		mous_release(int button, int x, int y, t_fdf *data);
+int		mous_move(int x, int y, t_fdf *data);
 int		error(char *msg);
-int		escape(fdf *data);
-void	fill(int x, int y, fdf *data);
-
+int		escape(t_fdf *data);
+void	fill(int x, int y, t_fdf *data);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:38:29 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/06 17:39:34 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:54:21 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	my_mlx_pixel_put(fdf *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_fdf *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -24,13 +24,13 @@ void	my_mlx_pixel_put(fdf *data, int x, int y, int color)
 	}
 }
 
-void	fill(int x, int y, fdf *data)
+void	fill(int x, int y, t_fdf *data)
 {
 	data->x = x;
 	data->y = y;
 }
 
-void	free_2dstring(int **matrix, fdf *data)
+void	free_2dstring(int **matrix, t_fdf *data)
 {
 	int	y;
 

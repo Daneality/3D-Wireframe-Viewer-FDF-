@@ -6,7 +6,7 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:17:47 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/07 19:18:45 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:50:04 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	error(char *msg)
 	return (1);
 }
 
-int	escape(fdf *data)
+int	escape(t_fdf *data)
 {
 	mlx_destroy_window(data->mxl, data->mlx_win);
 	mlx_destroy_image(data->mxl, data->img);

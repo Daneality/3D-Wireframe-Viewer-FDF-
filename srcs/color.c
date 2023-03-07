@@ -6,13 +6,13 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:49:06 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/06 17:50:34 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:49:47 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	calculate_color(fdf *data)
+void	calculate_color(t_fdf *data)
 {
 	data->z = data->matrix[data->y][data->x];
 	data->z1 = data->matrix[data->y1][data->x1];
@@ -28,7 +28,7 @@ void	calculate_color(fdf *data)
 		data->color = 0x00FFFF;
 }
 
-void	color(fdf *data)
+void	color(t_fdf *data)
 {
 	data->z = data->matrix[data->y][data->x];
 	data->z1 = data->matrix[data->y1][data->x1];

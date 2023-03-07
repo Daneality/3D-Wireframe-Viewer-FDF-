@@ -6,13 +6,13 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:14:04 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/07 19:40:18 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:54:03 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int	mous_press(int button, int x, int y, fdf *data)
+int	mous_press(int button, int x, int y, t_fdf *data)
 {
 	(void)x;
 	(void)y;
@@ -23,7 +23,7 @@ int	mous_press(int button, int x, int y, fdf *data)
 	return (0);
 }
 
-int	mous_release(int button, int x, int y, fdf *data)
+int	mous_release(int button, int x, int y, t_fdf *data)
 {
 	(void)x;
 	(void)y;
@@ -32,7 +32,7 @@ int	mous_release(int button, int x, int y, fdf *data)
 	return (0);
 }
 
-int	mous_move(int x, int y, fdf *data)
+int	mous_move(int x, int y, t_fdf *data)
 {
 	data->mouse->previous_x = data->mouse->x;
 	data->mouse->previous_y = data->mouse->y;

@@ -6,13 +6,13 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:14:30 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/07 19:40:43 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:53:16 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int	key(int key, fdf *data)
+int	key(int key, t_fdf *data)
 {
 	if (key >= 123 && key <= 126)
 		move_key(key, data);
@@ -35,7 +35,7 @@ int	key(int key, fdf *data)
 	return (0);
 }
 
-void	move_key(int key, fdf *data)
+void	move_key(int key, t_fdf *data)
 {
 	if (key == 126)
 		data->y_start_point -= 10;
@@ -48,7 +48,7 @@ void	move_key(int key, fdf *data)
 	draw_map(data);
 }
 
-void	zoom_key(int key, fdf *data)
+void	zoom_key(int key, t_fdf *data)
 {
 	if (key == 30)
 		data->zoom += 0.5;
@@ -69,7 +69,7 @@ void	zoom_key(int key, fdf *data)
 	draw_map(data);
 }
 
-void	zoom_height(int key, fdf *data)
+void	zoom_height(int key, t_fdf *data)
 {
 	if (key == 4)
 	{
@@ -86,7 +86,7 @@ void	zoom_height(int key, fdf *data)
 	draw_map(data);
 }
 
-void	change_project(int key, fdf *data)
+void	change_project(int key, t_fdf *data)
 {
 	data->y_angle = 0;
 	data->z_angle = 0;

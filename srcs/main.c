@@ -6,13 +6,13 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:20:49 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/07 19:42:44 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:54:35 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	inititialize_win(fdf *data)
+void	inititialize_win(t_fdf *data)
 {
 	data->win_width = 2000;
 	data->win_height = 1000;
@@ -38,11 +38,11 @@ void	inititialize_win(fdf *data)
 
 int	main(int argc, char *argv[])
 {
-	fdf	*data;
+	t_fdf	*data;
 
 	if (argc != 2)
 		error("invalid number of arguments\n");
-	data = (fdf *)ft_calloc(1, (sizeof(fdf)));
+	data = (t_fdf *)ft_calloc(1, (sizeof(t_fdf)));
 	if (!data)
 		return (0);
 	data->mouse = (t_mouse *)ft_calloc(1, (sizeof(t_mouse)));

@@ -6,7 +6,7 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 16:58:02 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/07 19:43:08 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:57:36 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,14 @@ void	matrix(int *matrix_line, int *cmatrix_line, char *string)
 	while (temp[i])
 	{
 		cmatrix_line[i] = get_color(temp[i]);
-		matrix_line[i] = ft_atoi(temp[i]); 
+		matrix_line[i] = ft_atoi(temp[i]);
 		free(temp[i]);
 		i++;
 	}
 	free(temp);
 }
 
-int	**get_map(char *name, fdf *data)
+int	**get_map(char *name, t_fdf *data)
 {
 	int		fd;
 	char	*string;
