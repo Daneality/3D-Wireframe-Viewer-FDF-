@@ -6,7 +6,7 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:55:07 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/06 18:02:32 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 17:38:00 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,29 @@ void	draw_line(fdf *data)
 	} 
 }
 
+void	draw_map(fdf *data)
+{
+	int	x;
+	int	y;
+
+	if (data->img)
+	{
+		mlx_destroy_image(data->mxl, data->img);
+		data->img = mlx_new_image(data->mxl, data->win_width, data->win_height);
+	}
+	y = 0;
+	while (y < data->height)
+	{
+		x = 0;
+		while (x < data->width)
+		{
+			if (x < data->width - 1)
+				isometric_x(x, y, data);
+			if (y < data->height - 1)
+				isometric_y(x, y, data);
+			x++;
+		}
+		y++;
+	}
+	mlx_put_image_to_window(data->mxl, data->mlx_win, data->img, 0, 0);
+}
