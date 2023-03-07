@@ -6,7 +6,7 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 16:58:02 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/06 17:12:39 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:43:08 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	get_height(char *name)
 	height = 0;
 	fd = open(name, O_RDONLY, 0);
 	if (fd == -1)
-		error("Error while trying to read file.");
+		error("Error while trying to read file.\n");
 	temp = get_next_line(fd);
 	while (temp)
 	{
@@ -64,10 +64,10 @@ int	get_width(char *name)
 	width = 0;
 	fd = open(name, O_RDONLY, 0);
 	if (!fd)
-		error("Error: Empty file!");
+		error("Error: Empty file\n");
 	str = get_next_line(fd);
 	if (!str)
-		error("Error: Empty file!");
+		error("Error: Empty file\n");
 	width = wd_counter(str);
 	free(str);
 	while (str)
@@ -88,7 +88,7 @@ void	matrix(int *matrix_line, int *cmatrix_line, char *string)
 	i = 0;
 	while (temp[i])
 	{
-		cmatrix_line[i] = colors(temp[i]);
+		cmatrix_line[i] = get_color(temp[i]);
 		matrix_line[i] = ft_atoi(temp[i]); 
 		free(temp[i]);
 		i++;

@@ -6,131 +6,54 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:20:49 by dsas              #+#    #+#             */
-/*   Updated: 2023/02/12 16:30:54 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:42:44 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-
-typedef struct s_rect
+void	inititialize_win(fdf *data)
 {
-	int	x;
-	int	y;
-	int width;
-	int height;
-	int color;
-}	t_rect;
-
-void	img_pix_put(t_img *img, int x, int y, int color)
-{
-	char    *pixel;
-	int		i;
-
-	i = img->bpp - 8;
-    pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	while (i >= 0)
-	{
-		/* big endian, MSB is the leftmost bit */
-		if (img->endian != 0)
-			*pixel++ = (color >> i) & 0xFF;
-		/* little endian, LSB is the leftmost bit */
-		else
-			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
-		i -= 8;
-	}
+	data->win_width = 2000;
+	data->win_height = 1000;
+	data->angle = 0.9;
+	data->zoom_height = 1;
+	data->project = True;
+	data->constant = 1;
+	data->bits_per_pixel = 0;
+	data->line_length = 0;
+	data->endian = 0;
+	data->mxl = mlx_init();
+	data->mlx_win = mlx_new_window(data->mxl, \
+	data->win_width, data->win_height, "FDF");
+	data->img = mlx_new_image(data->mxl, data->win_width, data->win_height);
+	data->addr = mlx_get_data_addr(data->img, \
+	&data->bits_per_pixel, &data->line_length, &data->endian);
+	if (data->win_width > data->win_height)
+		data->constant = data->win_width / data->win_height;
+	data->zoom = data->win_width / data->width / 1.5 / data->constant;
+	data->x_start_point = data->win_width / 2 - data->width / 3;
+	data->y_start_point = data->win_height / 2 - data->height / 3 * data->zoom;
 }
 
-/* The x and y coordinates of the rect corresponds to its upper left corner. */
-
-int render_rect(t_img *img, t_rect rect)
+int	main(int argc, char *argv[])
 {
-	int	i;
-	int j;
+	fdf	*data;
 
-	i = rect.y;
-	while (i < rect.y + rect.height)
-	{
-		j = rect.x;
-		while (j < rect.x + rect.width)
-			img_pix_put(img, j++, i, rect.color);
-		++i;
-	}
+	if (argc != 2)
+		error("invalid number of arguments\n");
+	data = (fdf *)ft_calloc(1, (sizeof(fdf)));
+	if (!data)
+		return (0);
+	data->mouse = (t_mouse *)ft_calloc(1, (sizeof(t_mouse)));
+	get_map(argv[1], data);
+	inititialize_win(data);
+	draw_map(data);
+	mlx_hook(data->mlx_win, 2, 0, key, data);
+	mlx_hook(data->mlx_win, 17, 0, escape, data);
+	mlx_hook(data->mlx_win, 4, 0, mous_press, data);
+	mlx_hook(data->mlx_win, 5, 0, mous_release, data);
+	mlx_hook(data->mlx_win, 6, 0, mous_move, data);
+	mlx_loop(data->mxl);
 	return (0);
-}
-
-void	render_background(t_img *img, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < WINDOW_HEIGHT)
-	{
-		j = 0;
-		while (j < WINDOW_WIDTH)
-		{
-			img_pix_put(img, j++, i, color);
-		}
-		++i;
-	}
-}
-
-int	handle_keypress(int keysym, t_data *data)
-{
-	printf("ewfsd");
-		printf("%d", keysym);
-	if (keysym == 53 || keysym == 17)
-	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
-		data->win_ptr = NULL;
-		exit(0);
-	}
-	return (0);
-}
-
-int	render(t_data *data)
-{
-	if (data->win_ptr == NULL)
-		return (1);
-	render_background(&data->img, WHITE_PIXEL);
-	render_rect(&data->img, (t_rect){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100, 100, 100, GREEN_PIXEL});
-	render_rect(&data->img, (t_rect){0, 0, 100, 100, RED_PIXEL});
-
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
-
-	return (0);
-}
-
-int	main(void)
-{
-	t_data	data;
-
-	data.mlx_ptr = mlx_init();
-	if (data.mlx_ptr == NULL)
-		return (MLX_ERROR);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "my window");
-	if (data.win_ptr == NULL)
-	{
-		free(data.win_ptr);
-		return (MLX_ERROR);
-	}
-
-	/* Setup hooks */ 
-	data.img.mlx_img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	
-	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
-			&data.img.line_len, &data.img.endian);
-
-	mlx_hook(data.win_ptr, 2, 0, &handle_keypress, &data);
-	mlx_loop_hook(data.mlx_ptr, &render, &data);
-
-	mlx_loop(data.mlx_ptr);
-
-	/* we will exit the loop if there's no window left, and execute this code */
-	mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
-	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
-
-	free(data.mlx_ptr);
 }

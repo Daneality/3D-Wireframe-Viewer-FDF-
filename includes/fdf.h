@@ -6,7 +6,7 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:18:01 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/07 18:56:34 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:38:54 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,17 @@ void	rotate_z(int *x, int *y, double gamma);
 void	rotate_x(int *y, int *z, double alpha);
 void	draw_map(fdf *data);
 void	draw_line(fdf *data);
+int		key(int key, fdf *data);
+void	move_key(int key, fdf *data);
+void	zoom_key(int key, fdf *data);
+void	zoom_height(int key, fdf *data);
+void	change_project(int key, fdf *data);
+int		mous_press(int button, int x, int y, fdf *data);
+int		mous_release(int button, int x, int y, fdf *data);
+int		mous_move(int x, int y, fdf *data);
+int		error(char *msg);
+int		escape(fdf *data);
+void	fill(int x, int y, fdf *data);
+
 
 #endif

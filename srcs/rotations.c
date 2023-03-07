@@ -6,11 +6,11 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:53:56 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/07 18:54:34 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:40:56 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf"
+#include "../includes/fdf.h"
 
 void	rotate_y(int *x, int *z, double beta)
 {

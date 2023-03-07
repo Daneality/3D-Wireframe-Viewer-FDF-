@@ -6,9 +6,11 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:48:51 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/07 17:49:49 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 19:39:56 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fdf.h"
 
 void	xy_isometric(int *x, int *y, int z)
 {
@@ -34,7 +36,7 @@ void	isometric_x(int x, int y, fdf *data)
 	rotate_y(&data->x1, &data->z1, data->y_angle);
 	rotate_z(&data->x, &data->y, data->z_angle);
 	rotate_z(&data->x1, &data->y1, data->z_angle);
-	if (data->project == true)
+	if (data->project == True)
 	{
 		xy_isometric(&data->x, &data->y, data->z);
 		xy_isometric(&data->x1, &data->y1, data->z1);
@@ -60,7 +62,7 @@ void	isometric_y(int x, int y, fdf *data)
 	rotate_y(&data->x1, &data->z1, data->y_angle);
 	rotate_z(&data->x, &data->y, data->z_angle);
 	rotate_z(&data->x1, &data->y1, data->z_angle);
-	if (data->project == true)
+	if (data->project == True)
 	{
 		xy_isometric(&data->x, &data->y, data->z);
 		xy_isometric(&data->x1, &data->y1, data->z1);
