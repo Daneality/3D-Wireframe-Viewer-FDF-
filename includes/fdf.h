@@ -6,7 +6,7 @@
 /*   By: dsas <dsas@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:18:01 by dsas              #+#    #+#             */
-/*   Updated: 2023/03/06 17:51:29 by dsas             ###   ########.fr       */
+/*   Updated: 2023/03/07 18:56:34 by dsas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,12 @@ int		**fill_matrix(int height, int width);
 int		**get_map(char *name, fdf *data);
 int		get_color(char *temp);
 void	color(fdf *data);
-
+void	isometric_x(int x, int y, fdf *data);
+void	isometric_y(int x, int y, fdf *data);
+void	rotate_y(int *x, int *z, double beta);
+void	rotate_z(int *x, int *y, double gamma);
+void	rotate_x(int *y, int *z, double alpha);
+void	draw_map(fdf *data);
+void	draw_line(fdf *data);
 
 #endif
