@@ -1,5 +1,5 @@
 # FDF
-FdF is a 3D Wireframe Viewer written on plane C. (macOS is only supported)
+FdF is a 3D Wireframe Viewer written on plain C. (only macOS supported)
 
 ## Usage
 
