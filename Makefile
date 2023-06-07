@@ -21,7 +21,7 @@ SRCS = main.c \
 		rotations.c \
 		utils.c
 
-NAME = fractal
+NAME = fdf
 
 LIBFT = libft/
 MLX = mlx_mac/
